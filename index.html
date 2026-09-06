@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ITQAN · Contact Hub</title>
+    <title>ITQAN · Contact & Services</title>
 
     <!-- Font Awesome 6 (Free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -15,7 +15,7 @@
 
     <style>
         /* ============================================================
-                   RESET & BASE
+                   RESET & BASE — Blue Theme
                    ============================================================ */
         * {
             margin: 0;
@@ -24,16 +24,17 @@
         }
 
         :root {
-            --primary: #080e26;
-            --primary-light: #121f4a;
-            --primary-glow: #2d4a9e;
-            --accent: #f5b042;
-            --accent-light: #f7c96a;
-            --accent-glow: rgba(245, 176, 66, 0.25);
-            --accent-gradient: linear-gradient(135deg, #f5b042, #f7c96a, #f5b042);
-            --card-bg: rgba(255, 255, 255, 0.88);
+            --primary: #0a1628;
+            --primary-light: #0f2647;
+            --primary-mid: #1a3a6b;
+            --primary-glow: #2d5a9e;
+            --accent: #4a8af4;
+            --accent-light: #7aadff;
+            --accent-glow: rgba(74, 138, 244, 0.25);
+            --accent-gradient: linear-gradient(135deg, #4a8af4, #7aadff, #4a8af4);
+            --card-bg: rgba(255, 255, 255, 0.92);
             --card-border: rgba(255, 255, 255, 0.20);
-            --text: #080e26;
+            --text: #0a1628;
             --text-muted: #475569;
             --shadow: 0 40px 100px rgba(0, 0, 0, 0.40);
             --radius: 32px;
@@ -60,44 +61,42 @@
         }
 
         /* ============================================================
-                   ANIMATED BACKGROUND — GRADIENT + PARTICLES + ORBS
+                   ANIMATED BACKGROUND — Blue Tones
                    ============================================================ */
 
-        /* Animated gradient mesh */
         .bg-mesh {
             position: fixed;
             inset: 0;
             z-index: 0;
             pointer-events: none;
             background:
-                radial-gradient(ellipse at 20% 50%, rgba(45, 74, 158, 0.25) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(245, 176, 66, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 80%, rgba(26, 42, 108, 0.20) 0%, transparent 50%);
+                radial-gradient(ellipse at 20% 50%, rgba(45, 90, 158, 0.30) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(74, 138, 244, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(26, 58, 107, 0.25) 0%, transparent 50%);
             animation: meshShift 20s ease-in-out infinite alternate;
         }
 
         @keyframes meshShift {
             0% {
                 background:
-                    radial-gradient(ellipse at 20% 50%, rgba(45, 74, 158, 0.25) 0%, transparent 60%),
-                    radial-gradient(ellipse at 80% 20%, rgba(245, 176, 66, 0.12) 0%, transparent 50%),
-                    radial-gradient(ellipse at 50% 80%, rgba(26, 42, 108, 0.20) 0%, transparent 50%);
+                    radial-gradient(ellipse at 20% 50%, rgba(45, 90, 158, 0.30) 0%, transparent 60%),
+                    radial-gradient(ellipse at 80% 20%, rgba(74, 138, 244, 0.12) 0%, transparent 50%),
+                    radial-gradient(ellipse at 50% 80%, rgba(26, 58, 107, 0.25) 0%, transparent 50%);
             }
             50% {
                 background:
-                    radial-gradient(ellipse at 70% 30%, rgba(45, 74, 158, 0.30) 0%, transparent 55%),
-                    radial-gradient(ellipse at 20% 70%, rgba(245, 176, 66, 0.15) 0%, transparent 45%),
-                    radial-gradient(ellipse at 60% 90%, rgba(26, 42, 108, 0.25) 0%, transparent 50%);
+                    radial-gradient(ellipse at 70% 30%, rgba(45, 90, 158, 0.35) 0%, transparent 55%),
+                    radial-gradient(ellipse at 20% 70%, rgba(74, 138, 244, 0.15) 0%, transparent 45%),
+                    radial-gradient(ellipse at 60% 90%, rgba(26, 58, 107, 0.30) 0%, transparent 50%);
             }
             100% {
                 background:
-                    radial-gradient(ellipse at 40% 70%, rgba(45, 74, 158, 0.20) 0%, transparent 50%),
-                    radial-gradient(ellipse at 10% 30%, rgba(245, 176, 66, 0.18) 0%, transparent 55%),
-                    radial-gradient(ellipse at 80% 60%, rgba(26, 42, 108, 0.30) 0%, transparent 45%);
+                    radial-gradient(ellipse at 40% 70%, rgba(45, 90, 158, 0.25) 0%, transparent 50%),
+                    radial-gradient(ellipse at 10% 30%, rgba(74, 138, 244, 0.18) 0%, transparent 55%),
+                    radial-gradient(ellipse at 80% 60%, rgba(26, 58, 107, 0.35) 0%, transparent 45%);
             }
         }
 
-        /* Floating particles */
         .bg-particles {
             position: fixed;
             inset: 0;
@@ -109,7 +108,7 @@
         .particle {
             position: absolute;
             border-radius: 50%;
-            background: radial-gradient(circle at center, rgba(245, 176, 66, 0.10), transparent 70%);
+            background: radial-gradient(circle at center, rgba(74, 138, 244, 0.08), transparent 70%);
             animation: floatParticle linear infinite;
         }
 
@@ -120,7 +119,6 @@
             left: -6%;
             animation-duration: 28s;
             animation-delay: 0s;
-            background: radial-gradient(circle at center, rgba(245, 176, 66, 0.08), transparent 70%);
         }
         .particle:nth-child(2) {
             width: 500px;
@@ -129,7 +127,7 @@
             right: -10%;
             animation-duration: 34s;
             animation-delay: 2s;
-            background: radial-gradient(circle at center, rgba(45, 74, 158, 0.10), transparent 70%);
+            background: radial-gradient(circle at center, rgba(45, 90, 158, 0.10), transparent 70%);
         }
         .particle:nth-child(3) {
             width: 250px;
@@ -138,7 +136,7 @@
             left: 55%;
             animation-duration: 22s;
             animation-delay: 4s;
-            background: radial-gradient(circle at center, rgba(245, 176, 66, 0.06), transparent 70%);
+            background: radial-gradient(circle at center, rgba(74, 138, 244, 0.06), transparent 70%);
         }
         .particle:nth-child(4) {
             width: 300px;
@@ -147,7 +145,7 @@
             left: 5%;
             animation-duration: 30s;
             animation-delay: 1s;
-            background: radial-gradient(circle at center, rgba(45, 74, 158, 0.08), transparent 70%);
+            background: radial-gradient(circle at center, rgba(45, 90, 158, 0.08), transparent 70%);
         }
         .particle:nth-child(5) {
             width: 180px;
@@ -156,7 +154,7 @@
             right: 15%;
             animation-duration: 20s;
             animation-delay: 3s;
-            background: radial-gradient(circle at center, rgba(245, 176, 66, 0.05), transparent 70%);
+            background: radial-gradient(circle at center, rgba(74, 138, 244, 0.05), transparent 70%);
         }
 
         @keyframes floatParticle {
@@ -177,14 +175,13 @@
             }
         }
 
-        /* Glowing orbs */
         .orb {
             position: fixed;
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
             filter: blur(80px);
-            opacity: 0.25;
+            opacity: 0.20;
             animation: orbFloat 18s ease-in-out infinite alternate;
         }
 
@@ -212,7 +209,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: rgba(245, 176, 66, 0.15);
+            background: rgba(74, 138, 244, 0.12);
             animation-delay: 3s;
             filter: blur(120px);
         }
@@ -226,32 +223,31 @@
             }
         }
 
-        /* Subtle noise texture overlay */
         .noise-overlay {
             position: fixed;
             inset: 0;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.03;
+            opacity: 0.02;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
             background-size: 256px 256px;
         }
 
         /* ============================================================
-                   MAIN CARD — Enhanced Glassmorphism
+                   MAIN CARD
                    ============================================================ */
 
         .contact-hub {
             position: relative;
             z-index: 1;
-            max-width: 900px;
+            max-width: 940px;
             width: 100%;
             background: var(--card-bg);
             backdrop-filter: blur(24px) saturate(1.4);
             -webkit-backdrop-filter: blur(24px) saturate(1.4);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            padding: 48px 48px 40px;
+            padding: 44px 44px 36px;
             border: 1px solid var(--card-border);
             animation: cardAppear 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
             transform-origin: center;
@@ -264,7 +260,7 @@
             inset: 0;
             border-radius: var(--radius);
             padding: 1px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.30));
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.25));
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
@@ -282,7 +278,7 @@
             }
         }
 
-        /* ===== DECORATIVE GLOW LINE ===== */
+        /* Glow line — blue */
         .glow-line {
             position: absolute;
             top: 0;
@@ -309,115 +305,93 @@
             }
         }
 
-        /* Decorative corner accents */
-        .corner-accent {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            border: 2px solid rgba(245, 176, 66, 0.10);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-        .corner-accent.tl {
-            top: -12px;
-            left: -12px;
-            border-right: none;
-            border-bottom: none;
-            border-radius: 50% 0 0 0;
-        }
-        .corner-accent.br {
-            bottom: -12px;
-            right: -12px;
-            border-left: none;
-            border-top: none;
-            border-radius: 0 0 50% 0;
-        }
-
         /* ============================================================
-                   PROFILE / HEADER
+                   PROFILE — Logo without circle
                    ============================================================ */
 
         .profile {
             display: flex;
             align-items: center;
             gap: 28px;
-            margin-bottom: 36px;
+            margin-bottom: 28px;
             flex-wrap: wrap;
             position: relative;
         }
 
-        /* ---- Logo / Avatar ---- */
-        .avatar-wrapper {
-            position: relative;
+        /* ---- Logo — rectangular, no circle ---- */
+        .logo-wrapper {
             flex-shrink: 0;
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
+            position: relative;
         }
 
-        .avatar-ring {
-            position: absolute;
-            inset: -5px;
-            border-radius: 50%;
-            background: conic-gradient(from 0deg, var(--accent), var(--primary-glow), var(--accent), var(--primary-glow), var(--accent));
-            opacity: 0.35;
-            animation: spinRing 8s linear infinite;
-            z-index: 0;
-        }
-
-        @keyframes spinRing {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-light), #0f1a3a);
+        .logo {
+            width: 100%;
+            height: 100%;
+            border-radius: 14px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(26, 58, 107, 0.30);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             position: relative;
             z-index: 1;
-            box-shadow: 0 8px 40px rgba(26, 42, 108, 0.30);
-            transition: var(--transition);
-            border: 2px solid rgba(255, 255, 255, 0.10);
         }
 
-        .avatar:hover {
-            transform: scale(1.06) rotate(-3deg);
-            box-shadow: 0 12px 56px rgba(26, 42, 108, 0.45);
+        .logo:hover {
+            transform: scale(1.04) rotate(-1deg);
+            box-shadow: 0 12px 48px rgba(26, 58, 107, 0.40);
         }
 
-        .avatar img {
+        .logo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50%;
             display: block;
         }
 
-        /* Fallback text if image fails */
-        .avatar .fallback-text {
-            font-size: 32px;
+        .logo .fallback-text {
+            font-size: 34px;
             font-weight: 900;
             color: #fff;
-            letter-spacing: 2px;
             font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 2px;
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.20);
+        }
+
+        /* Glow ring behind logo (subtle, not a circle border) */
+        .logo-glow {
+            position: absolute;
+            inset: -6px;
+            border-radius: 18px;
+            background: var(--accent-gradient);
+            opacity: 0.15;
+            filter: blur(12px);
+            z-index: 0;
+            animation: glowPulseLogo 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowPulseLogo {
+            0% {
+                opacity: 0.10;
+                transform: scale(0.98);
+            }
+            100% {
+                opacity: 0.25;
+                transform: scale(1.02);
+            }
         }
 
         .avatar-status {
             position: absolute;
             bottom: 2px;
             right: 2px;
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             background: #22c55e;
             border-radius: 50%;
             border: 3px solid #fff;
@@ -456,27 +430,13 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-weight: 900;
-            position: relative;
-        }
-
-        .profile-info h1 .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--accent-gradient);
-            border-radius: 4px;
-            opacity: 0.3;
-            filter: blur(2px);
         }
 
         .profile-info .title {
             font-size: 16px;
             font-weight: 500;
             color: var(--text-muted);
-            margin-top: 8px;
+            margin-top: 6px;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -493,24 +453,24 @@
             align-items: center;
             gap: 6px;
             background: var(--accent-gradient);
-            color: var(--primary);
+            color: #fff;
             font-size: 11px;
             font-weight: 700;
             padding: 5px 18px;
             border-radius: 100px;
             text-transform: uppercase;
             letter-spacing: 0.6px;
-            box-shadow: 0 2px 16px rgba(245, 176, 66, 0.30);
+            box-shadow: 0 2px 16px rgba(74, 138, 244, 0.30);
             transition: var(--transition-smooth);
         }
 
         .badge:hover {
             transform: scale(1.04);
-            box-shadow: 0 4px 24px rgba(245, 176, 66, 0.45);
+            box-shadow: 0 4px 24px rgba(74, 138, 244, 0.45);
         }
 
         .badge i {
-            font-size: 8px;
+            font-size: 7px;
         }
 
         .lang-hint {
@@ -524,29 +484,24 @@
             padding: 4px 14px;
             border-radius: 100px;
             border: 1px solid rgba(0, 0, 0, 0.04);
-            transition: var(--transition-smooth);
-        }
-
-        .lang-hint:hover {
-            background: rgba(0, 0, 0, 0.07);
         }
 
         /* ============================================================
-                   CONTACT GRID — Enhanced
+                   CONTACT GRID — Blue theme
                    ============================================================ */
 
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
-            gap: 18px;
-            margin: 32px 0 36px;
+            gap: 16px;
+            margin: 28px 0 30px;
         }
 
         .contact-card {
             display: flex;
             align-items: center;
             gap: 16px;
-            padding: 20px 22px;
+            padding: 18px 20px;
             background: rgba(248, 250, 255, 0.50);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
@@ -565,22 +520,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(245, 176, 66, 0.08), transparent 60%);
-            opacity: 0;
-            transition: var(--transition-smooth);
-        }
-
-        .contact-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: var(--radius-sm);
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(245, 176, 66, 0.15), transparent 50%, rgba(26, 42, 108, 0.05));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
+            background: linear-gradient(135deg, rgba(74, 138, 244, 0.08), transparent 60%);
             opacity: 0;
             transition: var(--transition-smooth);
         }
@@ -589,31 +529,26 @@
             opacity: 1;
         }
 
-        .contact-card:hover::after {
-            opacity: 1;
-        }
-
         .contact-card:hover {
             transform: translateY(-6px) scale(1.01);
             background: rgba(255, 255, 255, 0.85);
-            border-color: rgba(245, 176, 66, 0.25);
-            box-shadow: 0 16px 48px rgba(26, 42, 108, 0.10), 0 0 0 1px rgba(245, 176, 66, 0.10);
+            border-color: rgba(74, 138, 244, 0.25);
+            box-shadow: 0 16px 48px rgba(26, 58, 107, 0.10), 0 0 0 1px rgba(74, 138, 244, 0.10);
         }
 
         .contact-card:active {
             transform: scale(0.96);
-            transition-duration: 0.1s;
         }
 
         .contact-card .icon-wrap {
             flex-shrink: 0;
-            width: 50px;
-            height: 50px;
-            border-radius: 16px;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
+            font-size: 20px;
             color: #fff;
             transition: var(--transition);
             position: relative;
@@ -626,7 +561,7 @@
             box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
         }
 
-        /* Brand icon colors — enhanced with gradients */
+        /* Brand icon colors — blue themed */
         .icon-whatsapp {
             background: linear-gradient(135deg, #25D366, #128C7E);
         }
@@ -669,7 +604,7 @@
         }
 
         .contact-card .info .value {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             color: var(--text);
             margin-top: 2px;
@@ -694,15 +629,172 @@
         }
 
         /* ============================================================
-                   ACTIONS — Enhanced Buttons
+                   SERVICES SECTION — Toggle Button + Content
+                   ============================================================ */
+
+        .services-section {
+            margin: 8px 0 12px;
+        }
+
+        .services-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 32px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            background: linear-gradient(135deg, var(--primary-mid), var(--primary-light));
+            color: #fff;
+            box-shadow: 0 4px 24px rgba(26, 58, 107, 0.30);
+            width: 100%;
+            justify-content: center;
+            letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 48px rgba(26, 58, 107, 0.40);
+        }
+
+        .services-toggle:active {
+            transform: scale(0.97);
+        }
+
+        .services-toggle .btn-shimmer {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 3.5s ease-in-out infinite;
+        }
+
+        .services-toggle i {
+            font-size: 18px;
+            transition: var(--transition-smooth);
+        }
+
+        .services-toggle:hover i {
+            transform: scale(1.1) rotate(-4deg);
+        }
+
+        .services-toggle .toggle-icon {
+            transition: var(--transition-smooth);
+        }
+
+        .services-toggle.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Services content — collapsible */
+        .services-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease, margin 0.5s ease;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .services-content.open {
+            max-height: 3000px;
+            opacity: 1;
+            margin-top: 24px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: rgba(248, 250, 255, 0.60);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: var(--radius-sm);
+            padding: 22px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: var(--transition-smooth);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.80);
+            border-color: rgba(74, 138, 244, 0.15);
+            box-shadow: 0 12px 40px rgba(26, 58, 107, 0.06);
+        }
+
+        .service-card .service-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .service-card .service-title .ar {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            opacity: 0.6;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .service-card .service-title i {
+            color: var(--accent);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .service-card .service-item {
+            font-size: 14px;
+            color: var(--text-muted);
+            padding: 3px 0;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            line-height: 1.5;
+        }
+
+        .service-card .service-item .bullet {
+            color: var(--accent);
+            font-size: 8px;
+            flex-shrink: 0;
+            opacity: 0.5;
+        }
+
+        .service-card .service-item .fr {
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .service-card .service-item .ar {
+            font-size: 13px;
+            color: var(--text-muted);
+            opacity: 0.6;
+            direction: rtl;
+        }
+
+        /* ============================================================
+                   ACTIONS
                    ============================================================ */
 
         .actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 4px;
-            padding-top: 32px;
+            gap: 14px;
+            margin-top: 28px;
+            padding-top: 28px;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
             position: relative;
         }
@@ -715,7 +807,7 @@
             right: 20%;
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            opacity: 0.2;
+            opacity: 0.15;
             filter: blur(2px);
         }
 
@@ -724,7 +816,7 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            padding: 15px 36px;
+            padding: 14px 32px;
             border-radius: 100px;
             font-weight: 700;
             font-size: 15px;
@@ -734,7 +826,7 @@
             transition: var(--transition);
             text-decoration: none;
             flex: 1 1 auto;
-            min-width: 140px;
+            min-width: 130px;
             position: relative;
             overflow: hidden;
             letter-spacing: 0.2px;
@@ -743,7 +835,7 @@
         .btn .btn-shimmer {
             position: absolute;
             inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.20), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
             transform: translateX(-100%);
             animation: shimmer 3.5s ease-in-out infinite;
         }
@@ -766,23 +858,21 @@
             transform: scale(1.1) rotate(-4deg);
         }
 
-        /* Primary */
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            background: linear-gradient(135deg, var(--primary-mid), var(--primary-light));
             color: #fff;
-            box-shadow: 0 4px 24px rgba(26, 42, 108, 0.30);
+            box-shadow: 0 4px 24px rgba(26, 58, 107, 0.30);
         }
 
         .btn-primary:hover {
             transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 12px 48px rgba(26, 42, 108, 0.40);
+            box-shadow: 0 12px 48px rgba(26, 58, 107, 0.40);
         }
 
         .btn-primary:active {
             transform: scale(0.96);
         }
 
-        /* Outline */
         .btn-outline {
             background: transparent;
             color: var(--text);
@@ -790,14 +880,13 @@
         }
 
         .btn-outline:hover {
-            border-color: var(--primary-light);
-            color: var(--primary-light);
-            background: rgba(26, 42, 108, 0.04);
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(74, 138, 244, 0.04);
             transform: translateY(-4px);
-            box-shadow: 0 8px 32px rgba(26, 42, 108, 0.06);
+            box-shadow: 0 8px 32px rgba(74, 138, 244, 0.06);
         }
 
-        /* Success (WhatsApp) */
         .btn-success {
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: #fff;
@@ -818,7 +907,7 @@
                    ============================================================ */
 
         .footer {
-            margin-top: 32px;
+            margin-top: 28px;
             text-align: center;
             font-size: 13px;
             color: var(--text-muted);
@@ -837,7 +926,7 @@
         }
 
         .footer a {
-            color: var(--primary-light);
+            color: var(--accent);
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition-smooth);
@@ -862,17 +951,17 @@
         }
 
         .footer a:hover {
-            color: var(--accent);
+            color: var(--accent-light);
         }
 
         .footer .dot {
             color: var(--accent);
             font-weight: 700;
-            opacity: 0.5;
+            opacity: 0.4;
         }
 
         .footer .tagline {
-            background: rgba(245, 176, 66, 0.06);
+            background: rgba(74, 138, 244, 0.08);
             padding: 2px 14px;
             border-radius: 100px;
             font-size: 11px;
@@ -943,7 +1032,7 @@
 
         @media (max-width: 768px) {
             .contact-hub {
-                padding: 32px 24px 28px;
+                padding: 28px 20px 24px;
                 border-radius: 24px;
             }
 
@@ -951,20 +1040,19 @@
                 gap: 20px;
             }
 
-            .avatar-wrapper,
-            .avatar {
+            .logo-wrapper {
                 width: 80px;
                 height: 80px;
             }
 
-            .avatar .fallback-text {
-                font-size: 26px;
+            .logo .fallback-text {
+                font-size: 24px;
             }
 
             .avatar-status {
-                width: 18px;
-                height: 18px;
-                border-width: 2.5px;
+                width: 16px;
+                height: 16px;
+                border-width: 2px;
             }
 
             .profile-info h1 {
@@ -973,19 +1061,19 @@
 
             .contact-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 14px;
+                gap: 12px;
             }
 
             .contact-card {
-                padding: 16px 18px;
+                padding: 14px 16px;
                 gap: 14px;
             }
 
             .contact-card .icon-wrap {
-                width: 44px;
-                height: 44px;
-                font-size: 18px;
-                border-radius: 14px;
+                width: 42px;
+                height: 42px;
+                font-size: 17px;
+                border-radius: 12px;
             }
 
             .contact-card .info .label {
@@ -995,14 +1083,34 @@
                 font-size: 13px;
             }
 
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+
+            .service-card {
+                padding: 18px 18px;
+            }
+
+            .service-card .service-title {
+                font-size: 14px;
+            }
+            .service-card .service-title .ar {
+                font-size: 12px;
+            }
+            .service-card .service-item {
+                font-size: 13px;
+            }
+
             .btn {
                 font-size: 14px;
-                padding: 13px 24px;
+                padding: 12px 22px;
                 min-width: 100px;
             }
 
-            .corner-accent {
-                display: none;
+            .services-toggle {
+                padding: 12px 24px;
+                font-size: 14px;
             }
         }
 
@@ -1012,11 +1120,16 @@
             }
 
             .contact-hub {
-                padding: 24px 16px 20px;
+                padding: 20px 14px 18px;
                 border-radius: 20px;
             }
 
             .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .services-grid {
                 grid-template-columns: 1fr;
                 gap: 12px;
             }
@@ -1025,7 +1138,7 @@
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-                gap: 16px;
+                gap: 14px;
             }
 
             .profile-info .title {
@@ -1036,28 +1149,31 @@
                 font-size: 24px;
             }
 
-            .profile-info h1 .highlight::after {
-                display: none;
-            }
-
             .actions {
                 flex-direction: column;
-                gap: 12px;
+                gap: 10px;
             }
 
             .btn {
                 width: 100%;
                 justify-content: center;
-                padding: 14px 20px;
+                padding: 13px 18px;
+            }
+
+            .services-toggle {
+                width: 100%;
+                justify-content: center;
+                padding: 12px 18px;
+                font-size: 13px;
             }
 
             .toast {
                 width: calc(100% - 32px);
                 border-radius: 16px;
-                padding: 16px 20px;
+                padding: 14px 18px;
                 font-size: 14px;
                 bottom: 16px;
-                gap: 12px;
+                gap: 10px;
                 justify-content: center;
             }
 
@@ -1075,17 +1191,17 @@
 
         @media (max-width: 380px) {
             .contact-hub {
-                padding: 18px 12px 16px;
+                padding: 16px 10px 14px;
             }
             .contact-card {
-                padding: 14px 14px;
+                padding: 12px 12px;
                 gap: 12px;
             }
             .contact-card .icon-wrap {
-                width: 38px;
-                height: 38px;
-                font-size: 16px;
-                border-radius: 12px;
+                width: 36px;
+                height: 36px;
+                font-size: 15px;
+                border-radius: 10px;
             }
             .contact-card .info .value {
                 font-size: 12px;
@@ -1093,13 +1209,21 @@
             .profile-info h1 {
                 font-size: 20px;
             }
-            .avatar-wrapper,
-            .avatar {
-                width: 68px;
-                height: 68px;
+            .logo-wrapper {
+                width: 64px;
+                height: 64px;
             }
-            .avatar .fallback-text {
-                font-size: 22px;
+            .logo .fallback-text {
+                font-size: 20px;
+            }
+            .service-card {
+                padding: 14px 14px;
+            }
+            .service-card .service-title {
+                font-size: 13px;
+            }
+            .service-card .service-item {
+                font-size: 12px;
             }
         }
 
@@ -1120,7 +1244,7 @@
 
         ::selection {
             background: var(--accent);
-            color: var(--primary);
+            color: #fff;
         }
 
         ::-webkit-scrollbar {
@@ -1134,7 +1258,6 @@
             border-radius: 10px;
         }
 
-        /* Focus styles for accessibility */
         a:focus-visible,
         button:focus-visible {
             outline: 3px solid var(--accent);
@@ -1165,19 +1288,17 @@
     ============================================================ -->
     <main class="contact-hub" role="main" aria-label="Contact hub">
 
-        <!-- Decorative elements -->
+        <!-- Decorative -->
         <div class="glow-line" aria-hidden="true"></div>
-        <div class="corner-accent tl" aria-hidden="true"></div>
-        <div class="corner-accent br" aria-hidden="true"></div>
 
         <!-- ===== PROFILE ===== -->
         <div class="profile">
-            <div class="avatar-wrapper">
-                <div class="avatar-ring" aria-hidden="true"></div>
-                <div class="avatar" aria-hidden="true">
-                    <!-- ====== LOGO IMAGE ====== -->
+            <div class="logo-wrapper">
+                <div class="logo-glow" aria-hidden="true"></div>
+                <div class="logo" aria-hidden="true">
+                    <!-- ====== LOGO IMAGE — rectangular, no circle ====== -->
                     <img src="itqanlogo.png" alt="ITQAN Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-                    <span class="fallback-text" style="display:none;">IT</span>
+                    <span class="fallback-text" style="display:none;">ITQAN</span>
                 </div>
                 <div class="avatar-status" aria-label="En ligne"></div>
             </div>
@@ -1199,7 +1320,6 @@
         <!-- ===== CONTACT GRID ===== -->
         <div class="contact-grid" role="list">
 
-            <!-- WhatsApp -->
             <a href="https://wa.me/213699981577?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20page%20ITQAN."
             target="_blank" rel="noopener noreferrer" class="contact-card" role="listitem" aria-label="WhatsApp">
             <span class="icon-wrap icon-whatsapp" aria-hidden="true"><i class="fab fa-whatsapp"></i></span>
@@ -1209,7 +1329,6 @@
             </span>
         </a>
 
-        <!-- Telegram -->
         <a href="https://t.me/ITQAN_Support" target="_blank" rel="noopener noreferrer" class="contact-card" role="listitem" aria-label="Telegram">
             <span class="icon-wrap icon-telegram" aria-hidden="true"><i class="fab fa-telegram-plane"></i></span>
             <span class="info">
@@ -1218,7 +1337,6 @@
             </span>
         </a>
 
-        <!-- Facebook -->
         <a href="https://facebook.com/ITQAN.Services" target="_blank" rel="noopener noreferrer" class="contact-card" role="listitem" aria-label="Facebook">
             <span class="icon-wrap icon-facebook" aria-hidden="true"><i class="fab fa-facebook-f"></i></span>
             <span class="info">
@@ -1227,7 +1345,6 @@
             </span>
         </a>
 
-        <!-- Instagram -->
         <a href="https://instagram.com/itqan_services" target="_blank" rel="noopener noreferrer" class="contact-card" role="listitem" aria-label="Instagram">
             <span class="icon-wrap icon-instagram" aria-hidden="true"><i class="fab fa-instagram"></i></span>
             <span class="info">
@@ -1236,7 +1353,6 @@
             </span>
         </a>
 
-        <!-- Phone -->
         <a href="tel:+213699981577" class="contact-card" role="listitem" aria-label="Phone">
             <span class="icon-wrap icon-phone" aria-hidden="true"><i class="fas fa-phone"></i></span>
             <span class="info">
@@ -1245,7 +1361,6 @@
             </span>
         </a>
 
-        <!-- Email -->
         <a href="mailto:itqan.services@gmail.com" class="contact-card" role="listitem" aria-label="Email">
             <span class="icon-wrap icon-email" aria-hidden="true"><i class="fas fa-envelope"></i></span>
             <span class="info">
@@ -1254,7 +1369,6 @@
             </span>
         </a>
 
-        <!-- Address -->
         <a href="https://maps.google.com/maps?q=Berriane,+Ghardaia,+Alg%C3%A9rie" target="_blank" rel="noopener noreferrer" class="contact-card" role="listitem" aria-label="Address">
             <span class="icon-wrap icon-map" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></span>
             <span class="info">
@@ -1263,7 +1377,6 @@
             </span>
         </a>
 
-        <!-- Website -->
         <a href="#" class="contact-card" role="listitem" aria-label="Website">
             <span class="icon-wrap icon-globe" aria-hidden="true"><i class="fas fa-globe"></i></span>
             <span class="info">
@@ -1272,6 +1385,107 @@
             </span>
         </a>
 
+    </div>
+
+    <!-- ===== SERVICES SECTION ===== -->
+    <div class="services-section">
+        <button class="services-toggle" id="servicesToggle" aria-label="Afficher / masquer nos services">
+            <span class="btn-shimmer" aria-hidden="true"></span>
+            <i class="fas fa-concierge-bell" aria-hidden="true"></i>
+            <span>Nos Services · خدماتنا</span>
+            <i class="fas fa-chevron-down toggle-icon" aria-hidden="true"></i>
+        </button>
+
+        <div class="services-content" id="servicesContent">
+            <div class="services-grid">
+
+                <!-- Impression & Reprographie -->
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fas fa-print"></i>
+                        Impression &amp; Reprographie
+                        <span class="ar">· الطباعة والنسخ</span>
+                    </div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Photocopie N&B / Couleur — A4/A3</span> <span class="ar">نسخ أبيض/أسود وملون</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Impression N&B / Couleur</span> <span class="ar">طباعة أبيض/أسود وملون</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Scanner de documents</span> <span class="ar">مسح المستندات</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Papier Bristol &amp; papier photo</span> <span class="ar">ورق بريستول وورق صور</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Plastification</span> <span class="ar">تغليف</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Reliure &amp; spirale</span> <span class="ar">تجليد وحلزوني</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Tarifs étudiants &amp; grandes quantités</span> <span class="ar">تعريفات للطلاب والكميات الكبيرة</span></div>
+                </div>
+
+                <!-- Bureautique & Documents -->
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fas fa-file-alt"></i>
+                        Bureautique &amp; Documents
+                        <span class="ar">· المكتبية والوثائق</span>
+                    </div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Mémoires, rapports &amp; recherches</span> <span class="ar">مذكرات، تقارير وبحوث</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">CV professionnels</span> <span class="ar">سير ذاتية احترافية</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Saisie Arabe / Français / Anglais</span> <span class="ar">إدخال عربي/فرنسي/إنجليزي</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Word • Excel • PowerPoint</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Conversion Word ⇌ PDF</span> <span class="ar">تحويل وورد إلى بي دي إف</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Mise en page &amp; correction</span> <span class="ar">تنسيق وتصحيح</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Tableaux et calculs Excel</span> <span class="ar">جداول وحسابات إكسل</span></div>
+                </div>
+
+                <!-- Design & Communication -->
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fas fa-paint-brush"></i>
+                        Design &amp; Communication
+                        <span class="ar">· التصميم والمطبوعات</span>
+                    </div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Cartes de visite</span> <span class="ar">بطاقات تعريف</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Invitations &amp; certificats</span> <span class="ar">دعوات وشهادات</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Design personnalisé</span> <span class="ar">تصميم مخصص</span></div>
+                </div>
+
+                <!-- Informatique & Maintenance -->
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fas fa-laptop"></i>
+                        Informatique &amp; Maintenance
+                        <span class="ar">· الإعلام الآلي والصيانة</span>
+                    </div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Installation Windows</span> <span class="ar">تثبيت ويندوز</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Installation logiciels</span> <span class="ar">تثبيت برامج</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Diagnostic &amp; dépannage</span> <span class="ar">تشخيص وإصلاح</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Maintenance PC / Laptop</span> <span class="ar">صيانة حواسيب ومحمول</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Nettoyage &amp; optimisation</span> <span class="ar">تنظيف وتحسين</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Installation imprimantes</span> <span class="ar">تثبيت طابعات</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Réparation unités centrales</span> <span class="ar">إصلاح وحدات مركزية</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Sauvegarde &amp; récupération de données</span> <span class="ar">نسخ احتياطي واستعادة بيانات</span></div>
+                </div>
+
+                <!-- Web & Services Digitaux -->
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fas fa-globe"></i>
+                        Web &amp; Services Digitaux
+                        <span class="ar">· الويب والخدمات الرقمية</span>
+                    </div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Création de sites web</span> <span class="ar">إنشاء مواقع ويب</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Sites vitrines professionnels</span> <span class="ar">مواقع عرض احترافية</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Boutiques en ligne</span> <span class="ar">متاجر إلكترونية</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Applications web</span> <span class="ar">تطبيقات ويب</span></div>
+                </div>
+
+                <!-- Services pour Enseignantes -->
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        Services pour Enseignantes
+                        <span class="ar">· خدمات للأساتذة</span>
+                    </div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Documents pédagogiques</span> <span class="ar">وثائق بيداغوجية</span></div>
+                    <div class="service-item"><span class="bullet">●</span><span class="fr">Cahier de Journal</span> <span class="ar">دفتر اليومية</span></div>
+                </div>
+
+            </div>
+        </div>
     </div>
 
     <!-- ===== ACTIONS ===== -->
@@ -1309,7 +1523,7 @@
 </main>
 
 <!-- ============================================================
-TOAST NOTIFICATION
+TOAST
 ============================================================ -->
 <div class="toast" id="toast" role="alert" aria-live="polite">
     <i class="fas fa-check-circle" aria-hidden="true"></i>
@@ -1318,64 +1532,56 @@ TOAST NOTIFICATION
 </div>
 
 <!-- ============================================================
-JAVASCRIPT — Full protection + interactivity
+JAVASCRIPT
 ============================================================ -->
 <script>
     (function() {
         'use strict';
 
         // ============================================================
-        // 1. ANTI-INSPECTION
+        // ANTI-INSPECTION
         // ============================================================
 
-        // Disable right-click
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             showToast('🛡️ Inspection désactivée', 'fa-shield-alt');
             return false;
         });
 
-        // Disable key combos
         document.addEventListener('keydown', function(e) {
             if (e.key === 'F12') {
                 e.preventDefault();
                 showToast('🛡️ DevTools désactivé', 'fa-shield-alt');
                 return false;
             }
-
             const ctrl = e.ctrlKey || e.metaKey;
             const shift = e.shiftKey;
             const key = e.key.toLowerCase();
-
             if (ctrl && shift && (key === 'i' || key === 'j' || key === 'c' || key === 'k' || key === 'e')) {
                 e.preventDefault();
                 showToast('🛡️ DevTools désactivé', 'fa-shield-alt');
                 return false;
             }
-
             if (ctrl && key === 'u') {
                 e.preventDefault();
                 showToast('🛡️ Source protégée', 'fa-shield-alt');
                 return false;
             }
-
             if (ctrl && key === 's') {
                 e.preventDefault();
                 showToast('💾 Sauvegarde désactivée', 'fa-shield-alt');
                 return false;
             }
-
             return true;
         });
 
-        // Block drag
         document.addEventListener('dragstart', function(e) {
             e.preventDefault();
             return false;
         });
 
         // ============================================================
-        // 2. TOAST SYSTEM
+        // TOAST
         // ============================================================
 
         const toast = document.getElementById('toast');
@@ -1399,7 +1605,6 @@ JAVASCRIPT — Full protection + interactivity
             }, 3500);
         }
 
-        // Dismiss toast
         toastClose.addEventListener('click', function() {
             if (toastTimeout) {
                 clearTimeout(toastTimeout);
@@ -1419,7 +1624,26 @@ JAVASCRIPT — Full protection + interactivity
         });
 
         // ============================================================
-        // 3. VCARD
+        // SERVICES TOGGLE
+        // ============================================================
+
+        const toggleBtn = document.getElementById('servicesToggle');
+        const servicesContent = document.getElementById('servicesContent');
+
+        toggleBtn.addEventListener('click', function() {
+            const isOpen = servicesContent.classList.toggle('open');
+            toggleBtn.classList.toggle('active');
+            const icon = toggleBtn.querySelector('.toggle-icon');
+            if (isOpen) {
+                icon.style.transform = 'rotate(180deg)';
+                showToast('📋 Services affichés', 'fa-concierge-bell');
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        });
+
+        // ============================================================
+        // VCARD
         // ============================================================
 
         function buildVCard() {
@@ -1488,7 +1712,7 @@ JAVASCRIPT — Full protection + interactivity
         }
 
         // ============================================================
-        // 4. SHARE
+        // SHARE
         // ============================================================
 
         function shareContact() {
@@ -1559,14 +1783,14 @@ JAVASCRIPT — Full protection + interactivity
         }
 
         // ============================================================
-        // 5. EVENT LISTENERS
+        // EVENT LISTENERS
         // ============================================================
 
         document.getElementById('shareBtn').addEventListener('click', shareContact);
         document.getElementById('copyVcardBtn').addEventListener('click', copyVCard);
 
         // ============================================================
-        // 6. DEVTOOLS DETECTION (lightweight)
+        // DEVTOOLS DETECTION
         // ============================================================
 
         (function detectDevTools() {
@@ -1591,7 +1815,7 @@ JAVASCRIPT — Full protection + interactivity
             }
         }, 5000);
 
-        console.log('✨ ITQAN Contact Hub · Sécurisé & Animé · v2.0');
+        console.log('✨ ITQAN Contact Hub · Blue Theme · Services Toggle');
     })();
 </script>
 
