@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ITQAN · Contact Hub</title>
+
+    <!-- Font Awesome 6 (Free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Google Font: Inter + Arabic Fallback -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f1a3a;
+            --primary-light: #1a2a6c;
+            --primary-glow: #2d4a9e;
+            --accent: #f5b042;
+            --accent-light: #f7c96a;
+            --accent-glow: rgba(245, 176, 66, 0.3);
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --card-border: rgba(255, 255, 255, 0.18);
+            --text: #0b1628;
+            --text-muted: #475569;
+            --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+            --radius: 28px;
+            --radius-sm: 16px;
+            --transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            margin: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===== ANIMATED BACKGROUND PARTICLES ===== */
+        .bg-particles {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, rgba(245, 176, 66, 0.15), transparent 70%);
+            animation: floatParticle linear infinite;
+        }
+
+        .particle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: -5%;
+            left: -5%;
+            animation-duration: 25s;
+            animation-delay: 0s;
+        }
+        .particle:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            bottom: -10%;
+            right: -8%;
+            animation-duration: 30s;
+            animation-delay: 2s;
+            background: radial-gradient(circle at center, rgba(45, 74, 158, 0.12), transparent 70%);
+        }
+        .particle:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            top: 40%;
+            left: 60%;
+            animation-duration: 20s;
+            animation-delay: 4s;
+            background: radial-gradient(circle at center, rgba(245, 176, 66, 0.08), transparent 70%);
+        }
+        .particle:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            top: 70%;
+            left: 10%;
+            animation-duration: 28s;
+            animation-delay: 1s;
+            background: radial-gradient(circle at center, rgba(45, 74, 158, 0.10), transparent 70%);
+        }
+        .particle:nth-child(5) {
+            width: 150px;
+            height: 150px;
+            top: 15%;
+            right: 20%;
+            animation-duration: 18s;
+            animation-delay: 3s;
+            background: radial-gradient(circle at center, rgba(245, 176, 66, 0.06), transparent 70%);
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+            25% {
+                transform: translate(40px, -30px) scale(1.05) rotate(5deg);
+            }
+            50% {
+                transform: translate(-20px, 40px) scale(0.95) rotate(-3deg);
+            }
+            75% {
+                transform: translate(30px, -10px) scale(1.02) rotate(4deg);
+            }
+            100% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+        }
+
+        /* ===== FLOATING ORBS (small) ===== */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(60px);
+            opacity: 0.3;
+            animation: orbFloat 15s ease-in-out infinite alternate;
+        }
+
+        .orb-1 {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 5%;
+            background: var(--accent);
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            bottom: 5%;
+            right: 5%;
+            background: var(--primary-glow);
+            animation-delay: 5s;
+        }
+
+        @keyframes orbFloat {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(60px, -40px) scale(1.2);
+            }
+        }
+
+        /* ===== MAIN CARD ===== */
+        .contact-hub {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 44px 44px 36px;
+            border: 1px solid var(--card-border);
+            animation: cardAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transform-origin: center;
+        }
+
+        @keyframes cardAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.92) translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* ===== GLOW LINE (decorative) ===== */
+        .glow-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), var(--accent-light), var(--accent), transparent);
+            border-radius: 0 0 4px 4px;
+            opacity: 0.7;
+            filter: blur(1px);
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%,
+            100% {
+                opacity: 0.5;
+                width: 40%;
+            }
+            50% {
+                opacity: 1;
+                width: 70%;
+            }
+        }
+
+        /* ===== HEADER / PROFILE ===== */
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            margin-bottom: 34px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 800;
+            color: #fff;
+            box-shadow: 0 8px 32px rgba(26, 42, 108, 0.35);
+            transition: var(--transition);
+            user-select: none;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
+        }
+
+        .avatar:hover {
+            transform: scale(1.06) rotate(-3deg);
+            box-shadow: 0 12px 48px rgba(26, 42, 108, 0.45);
+        }
+
+        .avatar-ring {
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, var(--accent), var(--primary-light), var(--accent), var(--primary-light), var(--accent));
+            opacity: 0.3;
+            animation: spinRing 6s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes spinRing {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .avatar-status {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            width: 18px;
+            height: 18px;
+            background: #22c55e;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            z-index: 2;
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes statusPulse {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+            }
+        }
+
+        .profile-info h1 {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .profile-info h1 .highlight {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
+        .profile-info .title {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .profile-info .title i {
+            color: var(--accent);
+            font-size: 14px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 16px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 12px rgba(245, 176, 66, 0.3);
+        }
+
+        .badge i {
+            font-size: 10px;
+        }
+
+        .lang-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: rgba(0, 0, 0, 0.05);
+            padding: 3px 12px;
+            border-radius: 100px;
+        }
+
+        /* ===== CONTACT GRID ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 16px;
+            margin: 30px 0 34px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 20px;
+            background: rgba(248, 250, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            color: var(--text);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(245, 176, 66, 0.06), transparent 60%);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            background: #fff;
+            border-color: rgba(26, 42, 108, 0.10);
+            box-shadow: 0 12px 40px rgba(26, 42, 108, 0.10);
+        }
+
+        .contact-card:active {
+            transform: scale(0.97);
+        }
+
+        .contact-card .icon-wrap {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #fff;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+        }
+
+        .contact-card:hover .icon-wrap {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .icon-whatsapp {
+            background: #25D366;
+        }
+        .icon-telegram {
+            background: #26A5E4;
+        }
+        .icon-facebook {
+            background: #1877F2;
+        }
+        .icon-instagram {
+            background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fd5949 45%, #d6249f 80%, #285AEB 100%);
+        }
+        .icon-phone {
+            background: #34a853;
+        }
+        .icon-email {
+            background: #ea4335;
+        }
+        .icon-map {
+            background: #4285F4;
+        }
+        .icon-globe {
+            background: #00b894;
+        }
+
+        .contact-card .info {
+            flex: 1;
+            min-width: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card .info .label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .contact-card .info .value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin-top: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .contact-card .info .value i {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-left: 6px;
+            opacity: 0.5;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-card:hover .info .value i {
+            opacity: 1;
+            transform: translateX(3px);
+        }
+
+        /* ===== ACTIONS ===== */
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 6px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            flex: 1 1 auto;
+            min-width: 140px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent 60%);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .btn:hover::after {
+            opacity: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(26, 42, 108, 0.30);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 36px rgba(26, 42, 108, 0.40);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1.5px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-light);
+            color: var(--primary-light);
+            background: rgba(26, 42, 108, 0.04);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 20px rgba(26, 42, 108, 0.06);
+        }
+
+        .btn-success {
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.30);
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 36px rgba(37, 211, 102, 0.40);
+        }
+
+        .btn-success:active {
+            transform: scale(0.97);
+        }
+
+        .btn .btn-shimmer {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            letter-spacing: 0.2px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 6px 12px;
+        }
+
+        .footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+
+        .footer a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .footer .dot {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            background: var(--primary);
+            color: #fff;
+            padding: 16px 34px;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 15px;
+            box-shadow: 0 16px 56px rgba(0, 0, 0, 0.35);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 999;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(12px);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        .toast i {
+            font-size: 22px;
+            color: var(--accent);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+            .contact-hub {
+                padding: 28px 20px 24px;
+                border-radius: 22px;
+            }
+
+            .profile {
+                gap: 20px;
+            }
+
+            .avatar {
+                width: 76px;
+                height: 76px;
+                font-size: 28px;
+            }
+            .avatar-status {
+                width: 14px;
+                height: 14px;
+                bottom: 2px;
+                right: 2px;
+                border-width: 2px;
+            }
+
+            .profile-info h1 {
+                font-size: 24px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .contact-card {
+                padding: 14px 16px;
+            }
+
+            .contact-card .icon-wrap {
+                width: 42px;
+                height: 42px;
+                font-size: 18px;
+                border-radius: 12px;
+            }
+
+            .contact-card .info .label {
+                font-size: 11px;
+            }
+            .contact-card .info .value {
+                font-size: 13px;
+            }
+
+            .btn {
+                font-size: 14px;
+                padding: 12px 22px;
+                min-width: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+
+            .contact-hub {
+                padding: 20px 14px 18px;
+                border-radius: 18px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .profile {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .profile-info .title {
+                justify-content: center;
+            }
+            .profile-info h1 {
+                justify-content: center;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .toast {
+                width: calc(100% - 32px);
+                border-radius: 16px;
+                padding: 14px 20px;
+                font-size: 14px;
+                bottom: 16px;
+            }
+
+            .orb-1,
+            .orb-2 {
+                display: none;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .contact-hub {
+                padding: 16px 10px 14px;
+            }
+            .contact-card {
+                padding: 12px 12px;
+                gap: 12px;
+            }
+            .contact-card .icon-wrap {
+                width: 36px;
+                height: 36px;
+                font-size: 15px;
+            }
+        }
+
+        /* ===== UTILITY ===== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* selection color */
+        ::selection {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== ANIMATED BACKGROUND ===== -->
+    <div class="bg-particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+
+    <!-- ===== MAIN CONTAINER ===== -->
+    <main class="contact-hub" role="main" aria-label="Contact hub">
+
+        <!-- decorative glow line -->
+        <div class="glow-line" aria-hidden="true"></div>
+
+        <!-- ===== PROFILE ===== -->
+        <div class="profile">
+            <div class="avatar-wrapper">
+                <div class="avatar-ring" aria-hidden="true"></div>
+                <div class="avatar" aria-hidden="true">IT</div>
+                <div class="avatar-status" aria-label="En ligne"></div>
+            </div>
+            <div class="profile-info">
+                <h1>
+                    ITQAN
+                    <span style="font-weight:400;color:var(--text-muted);font-size:0.6em;">·</span>
+                    <span class="highlight">Services</span>
+                </h1>
+                <div class="title">
+                    <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                    <span>Contact &amp; Support</span>
+                    <span class="badge"><i class="fas fa-circle" style="font-size:6px;"></i> disponible</span>
+                    <span class="lang-hint"><i class="fas fa-globe"></i> FR / AR</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== CONTACT GRID ===== -->
+        <div class="contact-grid" role="list">
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/213699981577?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20page%20ITQAN."
+            target="_blank" rel="noopener noreferrer" class="contact-card" role="listitem" aria-label="WhatsApp">
+            <span class="icon-wrap icon-whatsapp" aria-hidden="true"><i class="fab fa-whatsapp"></i></span>
+            <span class="info">
+                <span class="label">WhatsApp</span>
+                <span class="value">+213 699 981 577 <i class="fas fa-arrow-right"></i></span>
+            </span>
+        </a>
+
+        <!-- Telegram -->
+        <a href="https://t.me/ITQAN_Support" target="_blank" rel="noopener noreferrer" class="contact-card" role="listitem" aria-label="Telegram">
+            <span class="icon-wrap icon-telegram" aria-hidden="true"><i class="fab fa-telegram-plane"></i></span>
+            <span class="info">
+                <span class="label">Telegram</span>
+                <span class="value">@ITQAN_Support <i class="fas fa-arrow-right"></i></span>
+            </span>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://facebook.com/ITQAN.Services" target="_blank" rel="noopener noreferrer" class="contact-card" role="listitem" aria-label="Facebook">
+            <span class="icon-wrap icon-facebook" aria-hidden="true"><i class="fab fa-facebook-f"></i></span>
+            <span class="info">
+                <span class="label">Facebook</span>
+                <span class="value">ITQAN.Services <i class="fas fa-arrow-right"></i></span>
+            </span>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://instagram.com/itqan_services" target="_blank" rel="noopener noreferrer" class="contact-card" role="listitem" aria-label="Instagram">
+            <span class="icon-wrap icon-instagram" aria-hidden="true"><i class="fab fa-instagram"></i></span>
+            <span class="info">
+                <span class="label">Instagram</span>
+                <span class="value">@itqan_services <i class="fas fa-arrow-right"></i></span>
+            </span>
+        </a>
+
+        <!-- Phone -->
+        <a href="tel:+213555123456" class="contact-card" role="listitem" aria-label="Phone">
+            <span class="icon-wrap icon-phone" aria-hidden="true"><i class="fas fa-phone"></i></span>
+            <span class="info">
+                <span class="label">Téléphone</span>
+                <span class="value">+213 699 981 577 <i class="fas fa-arrow-right"></i></span>
+            </span>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:itqan.services@gmail.com" class="contact-card" role="listitem" aria-label="Email">
+            <span class="icon-wrap icon-email" aria-hidden="true"><i class="fas fa-envelope"></i></span>
+            <span class="info">
+                <span class="label">Email</span>
+                <span class="value">itqan.services@gmail.com <i class="fas fa-arrow-right"></i></span>
+            </span>
+        </a>
+
+        <!-- Address -->
+        <a href="https://maps.google.com/maps?q=Alger,+Alg%C3%A9rie" target="_blank" rel="noopener noreferrer" class="contact-card" role="listitem" aria-label="Address">
+            <span class="icon-wrap icon-map" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></span>
+            <span class="info">
+                <span class="label">Adresse</span>
+                <span class="value">Berriane, Ghardaia, Algérie <i class="fas fa-arrow-right"></i></span>
+            </span>
+        </a>
+
+        <!-- Website -->
+        <a href="#" class="contact-card" role="listitem" aria-label="Website">
+            <span class="icon-wrap icon-globe" aria-hidden="true"><i class="fas fa-globe"></i></span>
+            <span class="info">
+                <span class="label">Site Web</span>
+                <span class="value">itqan.dz <i class="fas fa-arrow-right"></i></span>
+            </span>
+        </a>
+
+    </div>
+
+    <!-- ===== ACTIONS ===== -->
+    <div class="actions">
+
+        <button class="btn btn-primary" id="shareBtn" aria-label="Partager mes coordonnées">
+            <span class="btn-shimmer" aria-hidden="true"></span>
+            <i class="fas fa-share-alt" aria-hidden="true"></i>
+            <span>Partager</span>
+        </button>
+
+        <button class="btn btn-outline" id="copyVcardBtn" aria-label="Copier la carte de visite">
+            <i class="fas fa-id-card" aria-hidden="true"></i>
+            <span>Copier vCard</span>
+        </button>
+
+        <a href="https://wa.me/213699981577?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20page%20ITQAN."
+        target="_blank" rel="noopener noreferrer" class="btn btn-success" aria-label="WhatsApp direct">
+        <span class="btn-shimmer" aria-hidden="true"></span>
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        <span>WhatsApp</span>
+    </a>
+
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+    <span>© 2026 ITQAN</span>
+    <span class="dot">·</span>
+    <a href="mailto:itqan.services@gmail.com">itqan.services@gmail.com</a>
+    <span class="dot">·</span>
+    <span style="color:var(--text-muted);">SERVICE RAPIDE · PRIX RAISONNABLES</span>
+</div>
+
+</main>
+
+<!-- ===== TOAST NOTIFICATION ===== -->
+<div class="toast" id="toast" role="alert" aria-live="polite">
+    <i class="fas fa-check-circle" aria-hidden="true"></i>
+    <span id="toastMessage">Copié !</span>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+    (function() {
+        'use strict';
+
+        // ============================================================
+        // 1. ANTI-INSPECTION — disable right-click, devtools shortcuts
+        // ============================================================
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showToast('🛡️ Inspection désactivée', 'fa-shield-alt');
+            return false;
+        });
+
+        // Disable key combinations: F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+Shift+C, Ctrl+Shift+K, Ctrl+Shift+E
+        document.addEventListener('keydown', function(e) {
+            // F12
+            if (e.key === 'F12') {
+                e.preventDefault();
+                showToast('🛡️ DevTools désactivé', 'fa-shield-alt');
+                return false;
+            }
+
+            // Ctrl+Shift+I (Inspector), Ctrl+Shift+J (Console), Ctrl+U (View Source),
+            // Ctrl+Shift+C (Element picker), Ctrl+Shift+K (Console FF), Ctrl+Shift+E (Network)
+            const ctrl = e.ctrlKey || e.metaKey;
+            const shift = e.shiftKey;
+            const key = e.key.toLowerCase();
+
+            if (ctrl && shift && (key === 'i' || key === 'j' || key === 'c' || key === 'k' || key === 'e')) {
+                e.preventDefault();
+                showToast('🛡️ DevTools désactivé', 'fa-shield-alt');
+                return false;
+            }
+
+            // Ctrl+U (View Source)
+            if (ctrl && key === 'u') {
+                e.preventDefault();
+                showToast('🛡️ Source protégée', 'fa-shield-alt');
+                return false;
+            }
+
+            // Ctrl+S (Save page) — optional but nice
+            if (ctrl && key === 's') {
+                e.preventDefault();
+                showToast('💾 Sauvegarde désactivée', 'fa-shield-alt');
+                return false;
+            }
+
+            return true;
+        });
+
+        // Block drag events (to prevent dragging images / elements)
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // ============================================================
+        // 2. TOAST SYSTEM
+        // ============================================================
+
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toastMessage');
+        let toastTimeout = null;
+
+        function showToast(message, icon = 'fa-check-circle') {
+            if (toastTimeout) {
+                clearTimeout(toastTimeout);
+                toast.classList.remove('show');
+            }
+            void toast.offsetWidth;
+            toastMsg.textContent = message;
+            const iconEl = toast.querySelector('i');
+            iconEl.className = 'fas ' + icon;
+            toast.classList.add('show');
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+                toastTimeout = null;
+            }, 3200);
+        }
+
+        // Dismiss toast on click
+        toast.addEventListener('click', function() {
+            if (toastTimeout) {
+                clearTimeout(toastTimeout);
+                toastTimeout = null;
+            }
+            toast.classList.remove('show');
+        });
+
+        // ============================================================
+        // 3. VCARD
+        // ============================================================
+
+        function buildVCard() {
+            const lines = [
+                'BEGIN:VCARD',
+                'VERSION:4.0',
+                'FN:ITQAN Services',
+                'N:Services;ITQAN;;;',
+                'TEL;TYPE=voice,cell:+213699981577',
+                'TEL;TYPE=text,whatsapp:+213699981577',
+                'EMAIL:itqan.services@gmail.com',
+                'ADR;TYPE=work:;;Berriane;Algérie;;;',
+                'URL:https://itqan.dz',
+                'URL;TYPE=Facebook:https://facebook.com/ITQAN.Services',
+                'URL;TYPE=Instagram:https://instagram.com/itqan_services',
+                'URL;TYPE=Telegram:https://t.me/ITQAN_Support',
+                'NOTE:Contact ITQAN — Services informatiques / Impression / Web',
+                'END:VCARD'
+            ];
+            return lines.join('\n');
+        }
+
+        function copyVCard() {
+            const vcard = buildVCard();
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(vcard)
+                    .then(() => showToast('vCard copiée dans le presse-papiers', 'fa-id-card'))
+                    .catch(() => fallbackCopyVCard(vcard));
+            } else {
+                fallbackCopyVCard(vcard);
+            }
+        }
+
+        function fallbackCopyVCard(vcard) {
+            const ta = document.createElement('textarea');
+            ta.value = vcard;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            ta.style.top = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+                const ok = document.execCommand('copy');
+                if (ok) {
+                    showToast('vCard copiée !', 'fa-id-card');
+                } else {
+                    downloadVCard(vcard);
+                }
+            } catch (_) {
+                downloadVCard(vcard);
+            }
+            document.body.removeChild(ta);
+        }
+
+        function downloadVCard(vcard) {
+            const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'itqan_contact.vcf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('vCard téléchargée (.vcf)', 'fa-download');
+        }
+
+        // ============================================================
+        // 4. SHARE
+        // ============================================================
+
+        function shareContact() {
+            const shareData = {
+                title: 'ITQAN · Contact',
+                text: '📇 ITQAN Services — Contactez-nous !\n' +
+                    '📞 +213 699 981 577\n' +
+                    '✉️ itqan.services@gmail.com\n' +
+                    '📍 Alger, Algérie\n' +
+                    '💬 WhatsApp: https://wa.me/213699981577\n' +
+                    '📱 Telegram: https://t.me/ITQAN_Support\n' +
+                    '📘 Facebook: https://facebook.com/ITQAN.Services\n' +
+                    '📸 Instagram: https://instagram.com/itqan_services',
+                url: window.location.href,
+            };
+
+            if (navigator.share && navigator.canShare(shareData)) {
+                navigator.share(shareData)
+                    .then(() => showToast('Merci d\'avoir partagé !', 'fa-share-alt'))
+                    .catch((err) => {
+                        if (err.name !== 'AbortError') {
+                            copyShareLink();
+                        }
+                    });
+            } else {
+                copyShareLink();
+            }
+        }
+
+        function copyShareLink() {
+            const url = window.location.href;
+            const text =
+                '📇 ITQAN Services — Contactez-nous !\n' +
+                '📞 +213 555 123 456\n' +
+                '✉️ itqan.services@gmail.com\n' +
+                '📍 Alger, Algérie\n' +
+                '💬 WhatsApp: https://wa.me/213555123456\n' +
+                '📱 Telegram: https://t.me/ITQAN_Support\n' +
+                '📘 Facebook: https://facebook.com/ITQAN.Services\n' +
+                '📸 Instagram: https://instagram.com/itqan_services\n\n' +
+                '🔗 ' + url;
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text)
+                    .then(() => showToast('Lien copié ! Partagez-le facilement.', 'fa-link'))
+                    .catch(() => fallbackCopyText(text));
+            } else {
+                fallbackCopyText(text);
+            }
+        }
+
+        function fallbackCopyText(text) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            ta.style.top = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+                document.execCommand('copy');
+                showToast('Lien copié !', 'fa-link');
+            } catch (_) {
+                prompt('Copiez ce lien :', text);
+                showToast('Lien affiché dans la boîte de dialogue', 'fa-info-circle');
+            }
+            document.body.removeChild(ta);
+        }
+
+        // ============================================================
+        // 5. EVENT LISTENERS
+        // ============================================================
+
+        document.getElementById('shareBtn').addEventListener('click', shareContact);
+        document.getElementById('copyVcardBtn').addEventListener('click', copyVCard);
+
+        // ============================================================
+        // 6. DETECT DEVTOOLS OPEN (optional extra protection)
+        //    Using a simple debugger trick — but we keep it minimal.
+        // ============================================================
+
+        // This is a lightweight detection: if devtools is open,
+        // the debugger statement will pause. We catch it and reset.
+        // Not foolproof but adds another layer.
+        (function detectDevTools() {
+            const start = performance.now();
+            debugger;
+            const end = performance.now();
+            if (end - start > 100) {
+                // Devtools was likely open — we can silently handle it
+                // or just show a toast (but we don't want to annoy).
+                // We'll just log and do nothing visible.
+                console.log('🛡️ DevTools detection triggered (silent)');
+            }
+        })();
+
+        // Also periodically check (every 3s) — very light.
+        setInterval(function() {
+            const start = performance.now();
+            debugger;
+            const end = performance.now();
+            if (end - start > 100) {
+                // Devtools open — we could redirect or clear content
+                // but we'll just show a subtle toast once.
+                // Use a flag to avoid spamming.
+                if (!window._devtoolsWarned) {
+                    window._devtoolsWarned = true;
+                    showToast('🛡️ DevTools détecté — protection active', 'fa-shield-alt');
+                }
+            }
+        }, 4000);
+
+        console.log('✨ ITQAN Contact Hub · Sécurisé & Animé');
+    })();
+</script>
+</body>
+</html>
