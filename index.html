@@ -306,7 +306,7 @@
         }
 
         /* ============================================================
-                   PROFILE — Logo without circle
+                   PROFILE — Logo without card
                    ============================================================ */
 
         .profile {
@@ -318,7 +318,7 @@
             position: relative;
         }
 
-        /* ---- Logo — rectangular, no circle ---- */
+        /* ---- Logo wrapper ---- */
         .logo-wrapper {
             flex-shrink: 0;
             width: 110px;
@@ -326,31 +326,22 @@
             position: relative;
         }
 
+        /* Logo image — clean, no background, border, or shadow */
         .logo {
             width: 100%;
             height: 100%;
-            border-radius: 14px;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 32px rgba(26, 58, 107, 0.30);
             transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.08);
             position: relative;
             z-index: 1;
-        }
-
-        .logo:hover {
-            transform: scale(1.04) rotate(-1deg);
-            box-shadow: 0 12px 48px rgba(26, 58, 107, 0.40);
         }
 
         .logo img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
         }
 
@@ -361,29 +352,6 @@
             font-family: 'Space Grotesk', sans-serif;
             letter-spacing: 2px;
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.20);
-        }
-
-        /* Glow ring behind logo (subtle, not a circle border) */
-        .logo-glow {
-            position: absolute;
-            inset: -6px;
-            border-radius: 18px;
-            background: var(--accent-gradient);
-            opacity: 0.15;
-            filter: blur(12px);
-            z-index: 0;
-            animation: glowPulseLogo 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes glowPulseLogo {
-            0% {
-                opacity: 0.10;
-                transform: scale(0.98);
-            }
-            100% {
-                opacity: 0.25;
-                transform: scale(1.02);
-            }
         }
 
         .avatar-status {
@@ -1294,9 +1262,8 @@
         <!-- ===== PROFILE ===== -->
         <div class="profile">
             <div class="logo-wrapper">
-                <div class="logo-glow" aria-hidden="true"></div>
                 <div class="logo" aria-hidden="true">
-                    <!-- ====== LOGO IMAGE — rectangular, no circle ====== -->
+                    <!-- ====== LOGO IMAGE — clean, no card ====== -->
                     <img src="itqanlogo.png" alt="ITQAN Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
                     <span class="fallback-text" style="display:none;">ITQAN</span>
                 </div>
